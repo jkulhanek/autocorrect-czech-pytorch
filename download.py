@@ -2,6 +2,7 @@ import requests
 import io
 import zipfile
 from collections import namedtuple
+import tempfile
 import os
 
 DownloaderContext = namedtuple('DownloaderContext', ['base_url', 'resources_path'])
@@ -119,7 +120,7 @@ def extract_embedding(path):
     characters = list(characters)
     characters.sort(key = lambda x: ord(x))
     with open(rpath, 'w') as f:
-        f.write(''.join(characters))
+        f.write(u''.join(characters))
         f.flush()
 
     return (path, characters)
