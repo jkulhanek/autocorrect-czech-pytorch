@@ -13,7 +13,7 @@ import matplotlib.ticker as ticker
 import numpy as np
 
 
-device = torch.device('cpu')
+device = torch.device('cuda')
 
 teacher_forcing_ratio = 0.5
 
@@ -132,4 +132,4 @@ augmenter = Augmenter()
 dataset = create_dataset(augmenter, device)
 encoder1 = EncoderRNN(dataset.embedding_size, hidden_size).to(device)
 attn_decoder1 = AttnDecoderRNN(hidden_size, dataset.embedding_size, dropout_p=0.1, max_length=dataset.max_length + 50).to(device)
-trainIters(dataset, encoder1, attn_decoder1, 75000, print_every=5000)
+trainIters(dataset, encoder1, attn_decoder1, 75000, print_every=500)
