@@ -116,6 +116,7 @@ def trainIters(dataset, encoder, decoder, n_iters, print_every=1000, plot_every=
             plot_loss_total = 0
 
     showPlot(plot_losses)
+    torch.save(dict(encoder = encoder.state_dict(), decoder = decoder.state_dict()), 'weights.pth')
 
 
 def showPlot(points):
@@ -125,6 +126,7 @@ def showPlot(points):
     loc = ticker.MultipleLocator(base=0.2)
     ax.yaxis.set_major_locator(loc)
     plt.plot(points)
+    plt.savefig('plot.pdf')
 
 
 hidden_size = 256
