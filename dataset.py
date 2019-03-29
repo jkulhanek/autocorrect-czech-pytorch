@@ -8,7 +8,7 @@ EOS_token = 1
 
 class TextDataset:
     def __init__(self, file, transform = None):
-        with open(file, 'r') as f:
+        with open(file, 'r', encoding = 'utf-8') as f:
             self.lines = [x.strip('\n') for x in f.readlines()]
         self.max_length = max((len(x) for x in self.lines))
         self.transform = transform
