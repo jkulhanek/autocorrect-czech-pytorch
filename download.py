@@ -105,7 +105,7 @@ def extract_phword(path):
 def extract_embedding(path):
     rpath = os.path.join(os.path.dirname(path), 'embedding.txt')
     if os.path.isfile(rpath):
-        with open(rpath, 'r') as f:
+        with open(rpath, 'r', encoding = 'utf-8') as f:
             characters = f.read().strip('\n')
         return (path, list(characters))
 
