@@ -98,7 +98,7 @@ def extract_phword(path):
                 raise e
 
             for x in obj.getElementsByTagName('line'):
-                fout.write(x.firstChild.data + '\n')
+                fout.write(x.firstChild.data.encode('utf-8') + u'\n')
         fout.flush()
     return rpath
 
