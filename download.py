@@ -87,7 +87,7 @@ def extract_phword(path):
     if os.path.isfile(rpath):
         return rpath
 
-    with open(rpath, 'w+') as fout:
+    with open(rpath, 'w+', encoding = 'utf-8') as fout:
         for f in os.listdir(path):
             if not f.endswith('.xml'):
                 continue
@@ -98,7 +98,7 @@ def extract_phword(path):
                 raise e
 
             for x in obj.getElementsByTagName('line'):
-                fout.write(x.firstChild.data.encode('utf-8') + u'\n')
+                fout.write(x.firstChild.data + '\n')
         fout.flush()
     return rpath
 
@@ -111,7 +111,7 @@ def extract_embedding(path):
 
     characters = set()
 
-    with open(path, 'r') as f:
+    with open(path, 'r', encoding = 'utf-8') as f:
         for line in f.readlines():
             line = line.strip('\n')
             for char in line:
@@ -119,7 +119,7 @@ def extract_embedding(path):
 
     characters = list(characters)
     characters.sort(key = lambda x: ord(x))
-    with open(rpath, 'w') as f:
+    with open(rpath, 'w', encoding = 'utf-8') as f:
         f.write(u''.join(characters))
         f.flush()
 
